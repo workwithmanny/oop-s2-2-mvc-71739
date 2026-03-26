@@ -1,0 +1,26 @@
+@model oop_s2_2_mvc_71739.Models.FollowUp
+
+@{
+    ViewData["Title"] = "Follow-Up Details";
+}
+
+<h1>Follow-Up Details</h1>
+
+<div>
+    <h4>@Model.Inspection?.Premises?.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Inspection Date</dt>
+        <dd class="col-sm-10">@Model.Inspection?.InspectionDate.ToString("yyyy-MM-dd")</dd>
+        <dt class="col-sm-2">Due Date</dt>
+        <dd class="col-sm-10">@Model.DueDate.ToString("yyyy-MM-dd")</dd>
+        <dt class="col-sm-2">Status</dt>
+        <dd class="col-sm-10">@Model.Status</dd>
+        <dt class="col-sm-2">Closed Date</dt>
+        <dd class="col-sm-10">@Model.ClosedDate?.ToString("yyyy-MM-dd")</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

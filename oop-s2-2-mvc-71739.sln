@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oop-s2-2-mvc-71739", "oop-s2-2-mvc-71739\oop-s2-2-mvc-71739.csproj", "{58E3FABA-E320-40F4-8D39-960CA5240E6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oop-s2-2-mvc-71739.Tests", "oop-s2-2-mvc-71739.Tests\oop-s2-2-mvc-71739.Tests.csproj", "{3D4C5F2A-0DFD-4BE2-9E5F-7B78EE4A4A23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58E3FABA-E320-40F4-8D39-960CA5240E6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58E3FABA-E320-40F4-8D39-960CA5240E6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58E3FABA-E320-40F4-8D39-960CA5240E6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58E3FABA-E320-40F4-8D39-960CA5240E6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D4C5F2A-0DFD-4BE2-9E5F-7B78EE4A4A23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D4C5F2A-0DFD-4BE2-9E5F-7B78EE4A4A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D4C5F2A-0DFD-4BE2-9E5F-7B78EE4A4A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D4C5F2A-0DFD-4BE2-9E5F-7B78EE4A4A23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

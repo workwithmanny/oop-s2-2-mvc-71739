@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Food Safety Inspection Tracker</h1>
+        <p class="page-subtitle">Monitor inspections, follow-ups, and risk across all premises.</p>
+    </div>
+</div>
+
+<div class="stat-grid">
+    <div class="stat-card">
+        <div class="stat-label">Quick access</div>
+        <div class="stat-value">Dashboard</div>
+        <p class="stat-meta">Review performance trends</p>
+        <a class="btn btn-primary mt-2" asp-controller="Dashboard" asp-action="Index">Open Dashboard</a>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Manage</div>
+        <div class="stat-value">Premises</div>
+        <p class="stat-meta">Update risk profiles and details</p>
+        <a class="btn btn-primary mt-2" asp-controller="Premises" asp-action="Index">View Premises</a>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Track</div>
+        <div class="stat-value">Inspections</div>
+        <p class="stat-meta">Create and review inspection results</p>
+        <a class="btn btn-primary mt-2" asp-controller="Inspections" asp-action="Index">View Inspections</a>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Follow up</div>
+        <div class="stat-value">Actions</div>
+        <p class="stat-meta">Stay on top of open items</p>
+        <a class="btn btn-primary mt-2" asp-controller="FollowUps" asp-action="Index">View Follow-Ups</a>
+    </div>
+</div>

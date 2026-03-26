@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-oop_s2_2_mvc_71739-9620bbe1-0b07-44b8-b9d8-00ebf7ad8093</UserSecretsId>
+        <RootNamespace>oop_s2_2_mvc_71739</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Serilog.AspNetCore" Version="9.0.0"/>
+        <PackageReference Include="Serilog.Sinks.Console" Version="6.1.0"/>
+        <PackageReference Include="Serilog.Sinks.File" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.3"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.3"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="10.0.3"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.3"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.3"/>
+    </ItemGroup>
+
+</Project>

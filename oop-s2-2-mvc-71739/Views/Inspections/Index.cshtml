@@ -1,0 +1,56 @@
+@model IEnumerable<oop_s2_2_mvc_71739.Models.Inspection>
+
+@{
+    ViewData["Title"] = "Inspections";
+}
+
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Inspections</h1>
+        <p class="page-subtitle">Track outcomes and scores</p>
+    </div>
+</div>
+
+@if (User.IsInRole(RoleNames.Admin) || User.IsInRole(RoleNames.Inspector))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
+<div class="data-card">
+    <div class="data-card-header">Inspection Log</div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Premises</th>
+                    <th>Date</th>
+                    <th>Score</th>
+                    <th>Outcome</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+@foreach (var item in Model)
+{
+                var outcomeClass = item.Outcome == InspectionOutcome.Fail ? "badge-risk-high" : "badge-risk-low";
+                <tr>
+                    <td>@item.Premises?.Name</td>
+                    <td>@item.InspectionDate.ToString("yyyy-MM-dd")</td>
+                    <td>@item.Score</td>
+                    <td><span class="badge-soft @outcomeClass">@item.Outcome</span></td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        @if (User.IsInRole(RoleNames.Admin) || User.IsInRole(RoleNames.Inspector))
+                        {
+                            <span> | </span><a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <span> | </span><a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        }
+                    </td>
+                </tr>
+}
+            </tbody>
+        </table>
+    </div>
+</div>

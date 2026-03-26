@@ -1,0 +1,122 @@
+@model oop_s2_2_mvc_71739.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Dashboard</h1>
+        <p class="page-subtitle">Snapshot for @DateTime.Today.ToString("MMMM yyyy")</p>
+    </div>
+    <div class="page-subtitle">Food Safety Tracker</div>
+</div>
+
+<div class="stat-grid">
+    <div class="stat-card">
+        <div class="stat-label">Inspections this month</div>
+        <div class="stat-value">@Model.InspectionsThisMonth</div>
+        <p class="stat-meta">All recorded inspections</p>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Failed this month</div>
+        <div class="stat-value" style="color: var(--danger-500);">@Model.FailedInspectionsThisMonth</div>
+        <p class="stat-meta">Focus on corrective action</p>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Open follow-ups</div>
+        <div class="stat-value">@Model.OpenFollowUps</div>
+        <p class="stat-meta">Across all premises</p>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Overdue follow-ups</div>
+        <div class="stat-value" style="color: var(--accent-500);">@Model.OverdueOpenFollowUps</div>
+        <p class="stat-meta">Open items past due</p>
+    </div>
+</div>
+
+@if (Model.OverdueOpenFollowUps > 0)
+{
+    <div class="alert-soft">
+        @Model.OverdueOpenFollowUps follow-ups are overdue and remain open. Review required before end of week.
+    </div>
+}
+
+<form method="get" class="filter-card">
+    <div class="row g-3">
+        <div class="col-md-5">
+            <label class="form-label" for="town">Town</label>
+            <select id="town" name="Town" class="form-select">
+                <option value="">All towns</option>
+                @foreach (var town in Model.TownOptions)
+                {
+                    <option value="@town" selected="@(Model.Filter.Town == town)">
+                        @town
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="col-md-5">
+            <label class="form-label" for="riskRating">Risk Rating</label>
+            <select id="riskRating" name="RiskRating" class="form-select">
+                <option value="">All ratings</option>
+                @foreach (var rating in Enum.GetValues<RiskRating>())
+                {
+                    <option value="@rating" selected="@(Model.Filter.RiskRating == rating)">
+                        @rating
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+        </div>
+    </div>
+</form>
+
+<div class="data-card mt-4">
+    <div class="data-card-header">Inspections by premises — this month</div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Premises</th>
+                    <th>Town</th>
+                    <th>Risk</th>
+                    <th>Last score</th>
+                    <th>Outcome</th>
+                    <th>Open follow-ups</th>
+                </tr>
+            </thead>
+            <tbody>
+@if (Model.PremisesRows.Count == 0)
+{
+                <tr>
+                    <td colspan="6" class="text-muted">No inspections recorded this month.</td>
+                </tr>
+}
+else
+{
+    foreach (var row in Model.PremisesRows)
+    {
+        var riskClass = row.RiskRating switch
+        {
+            RiskRating.High => "badge-risk-high",
+            RiskRating.Medium => "badge-risk-medium",
+            _ => "badge-risk-low"
+        };
+        var outcomeClass = row.LastOutcome == InspectionOutcome.Fail ? "badge-risk-high" : "badge-risk-low";
+                <tr>
+                    <td>@row.PremisesName</td>
+                    <td>@row.Town</td>
+                    <td><span class="badge-soft @riskClass">@row.RiskRating</span></td>
+                    <td>@row.LastScore</td>
+                    <td><span class="badge-soft @outcomeClass">@row.LastOutcome</span></td>
+                    <td>@row.OpenFollowUps</td>
+                </tr>
+    }
+}
+            </tbody>
+        </table>
+    </div>
+</div>

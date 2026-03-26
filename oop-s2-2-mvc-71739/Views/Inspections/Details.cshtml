@@ -1,0 +1,26 @@
+@model oop_s2_2_mvc_71739.Models.Inspection
+
+@{
+    ViewData["Title"] = "Inspection Details";
+}
+
+<h1>Inspection Details</h1>
+
+<div>
+    <h4>@Model.Premises?.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Date</dt>
+        <dd class="col-sm-10">@Model.InspectionDate.ToString("yyyy-MM-dd")</dd>
+        <dt class="col-sm-2">Score</dt>
+        <dd class="col-sm-10">@Model.Score</dd>
+        <dt class="col-sm-2">Outcome</dt>
+        <dd class="col-sm-10">@Model.Outcome</dd>
+        <dt class="col-sm-2">Notes</dt>
+        <dd class="col-sm-10">@Model.Notes</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
